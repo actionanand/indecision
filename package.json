@@ -1,0 +1,14 @@
+{
+  "name": "indecision",
+  "version": "1.0.0",
+  "description": "React basic practice app",
+  "main": "index.js",
+  "repository": "git@github.com:actionanand/indecision.git",
+  "author": "Anand Raja",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
