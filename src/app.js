@@ -1,7 +1,27 @@
+class Indecision extends React.Component {
+    
+    render() {
+        const title = 'Indecision App';
+        const subTitle = 'Put your life in the hands of a computer';
+        const options = ['First thing', 'Second thing', 'Fourth thing']
+        return(
+            <div>
+                <Header title={title} subTitle={subTitle}></Header>
+                <Action/>
+                <Options options={options} />
+                <AddOption/>
+            </div>
+        );
+    };
+};
+
 class Header extends React.Component {
     render() {
         return (
-            <h1>Header Component from react!</h1>
+            <div>
+                <h1>{this.props.title}</h1>
+                <h2>{this.props.subTitle}</h2>
+            </div>
         );
     };
 };
@@ -9,7 +29,9 @@ class Header extends React.Component {
 class Action extends React.Component {
     render() {
         return(
-            <p>Action</p>
+            <div>
+                Action
+            </div>
         );
     };
 };
@@ -17,26 +39,39 @@ class Action extends React.Component {
 class Options extends React.Component {
     render() {
         return(
-            <p>Options</p>
+            <div>
+                <p>Options are below.</p>
+                {
+                    this.props.options.map((option) => {
+                        return (
+                            <Option key={option} key optionText={option} />
+                        )
+                    })
+                }
+            </div>
         );
     };
 };
 
-class AddOptions extends React.Component {
+class Option extends React.Component {
     render() {
         return(
-            <p>Add Options</p>
+            <div>
+                <p>{this.props.optionText}</p>
+            </div>
         );
     };
 };
 
-const jsx = (
-    <div>
-        <Header/>
-        <Action/>
-        <Options></Options>
-        <AddOptions/>
-    </div>
-);
+class AddOption extends React.Component {
+    render() {
+        return(
+            <div>
+                Add Option
+            </div>
+        );
+    };
+};
 
-ReactDOM.render(jsx, document.getElementById('app'));
+
+ReactDOM.render(<Indecision/>, document.getElementById('app'));
