@@ -1,20 +1,45 @@
-console.log("App is running");
+let count = 0;
 
-var template = (
-<div>
-    <h1>This is sample jsx text!</h1>
-    <p>Well done!</p> 
-</div>
-);
+const user = {
+    name: 'Anand Raja',
+    age: 27,
+    location: 'India'
+};
 
-var template2 = (
-    <div>
-        <h1>Anand</h1>
-        <p>India</p>
-    </div>
-);
+const addOne = () => {
+    count++;
+    renderCounterApp();
+};
 
-var appRoot = document.getElementById('app');
+const minusOne = () => {
+    count--;
+    renderCounterApp();
+};
 
-// ReactDOM.render(template, appRoot);
-ReactDOM.render(template2, appRoot);
+const resetCounter = () => {
+    count = 0;
+    renderCounterApp();
+};
+
+const appRoot = document.getElementById('app');
+
+const renderCounterApp = () => {
+    const template = (
+        <div>
+            <h1>{user.name.toUpperCase()}</h1>
+            <p>{user.location}</p>
+            {user.age >= 18 && <p>{'Age: ' + user.age}</p>}
+            <h1>Count: {count}</h1>
+            <button onClick={addOne}>+1</button>
+            <button onClick={minusOne}>-1</button>
+            <button onClick={resetCounter}>reset</button>
+        </div>
+    );
+
+    ReactDOM.render(template, appRoot);
+};
+
+renderCounterApp();
+
+
+
