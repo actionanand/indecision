@@ -1,60 +1,42 @@
-console.log('App.js is running!');
-
-const app = {
-  title: 'Indecision App',
-  subtitle: 'Put your life in the hands of a computer',
-  options: []
+class Header extends React.Component {
+    render() {
+        return (
+            <h1>Header Component from react!</h1>
+        );
+    };
 };
 
-const onFormSubmit = (e) => {
-  e.preventDefault();
-
-  const option = e.target.elements.option.value;
-
-  if (option) {
-    app.options.push(option);
-    e.target.elements.option.value = '';
-    render();
-  }
+class Action extends React.Component {
+    render() {
+        return(
+            <p>Action</p>
+        );
+    };
 };
 
-const onRemoveAll = () => {
-  app.options = [];
-  render();
+class Options extends React.Component {
+    render() {
+        return(
+            <p>Options</p>
+        );
+    };
 };
 
-const onMakeDecision = () => {
-    let randNum = Math.floor(Math.random() * app.options.length);
-    let option = app.options[randNum];
-    alert(option);
+class AddOptions extends React.Component {
+    render() {
+        return(
+            <p>Add Options</p>
+        );
+    };
 };
 
-const appRoot = document.getElementById('app');
-
-const render = () => {
-  const template = (
+const jsx = (
     <div>
-      <h1>{app.title}</h1>
-      {app.subtitle && <p>{app.subtitle}</p>}
-      <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-      <button disabled={app.options.length===0} onClick={onMakeDecision}>What should I do?</button>
-      <button disabled={app.options.length===0} onClick={onRemoveAll}>Remove All</button>
-      <ol>
-          {
-              app.options.map((option) => {
-                return <li key={option}>{option}</li>
-              })
-          }
-      </ol>
-      <form onSubmit={onFormSubmit}>
-        <input type="text" name="option" />
-        <button>Add Option</button>
-      </form>
+        <Header/>
+        <Action/>
+        <Options></Options>
+        <AddOptions/>
     </div>
-  );
+);
 
-  ReactDOM.render(template, appRoot);
-};
-
-render();
- 
+ReactDOM.render(jsx, document.getElementById('app'));
