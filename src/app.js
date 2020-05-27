@@ -1,14 +1,19 @@
 class Indecision extends React.Component {
-    
+    constructor(props){
+        super(props);
+        this.state = {
+            options: ['First thing', 'Second thing', 'Fourth thing']
+        };
+    };
+
     render() {
         const title = 'Indecision App';
         const subTitle = 'Put your life in the hands of a computer';
-        const options = ['First thing', 'Second thing', 'Fourth thing']
         return(
             <div>
                 <Header title={title} subTitle={subTitle}></Header>
                 <Action/>
-                <Options options={options} />
+                <Options options={this.state.options} />
                 <AddOption/>
             </div>
         );
@@ -58,7 +63,7 @@ class Options extends React.Component {
                 {
                     this.props.options.map((option) => {
                         return (
-                            <Option key={option} key optionText={option} />
+                            <Option key={option} optionText={option} />
                         )
                     })
                 }
