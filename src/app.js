@@ -2,6 +2,8 @@ class Indecision extends React.Component {
     constructor(props){
         super(props);
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+        this.handlePick = this.handlePick.bind(this);
+
         this.state = {
             options: ['First thing', 'Second thing', 'Fourth thing']
         };
@@ -15,13 +17,18 @@ class Indecision extends React.Component {
         });
     };
 
+    handlePick() {
+        alert('Handle picked!');
+    };
+
     render() {
         const title = 'Indecision App';
         const subTitle = 'Put your life in the hands of a computer';
         return(
             <div>
                 <Header title={title} subTitle={subTitle}></Header>
-                <Action hasOptions={this.state.options.length > 0}/>
+                <Action hasOptions={this.state.options.length > 0}
+                onHandlePick={this.handlePick}/>
                 <Options options={this.state.options} 
                 onHandleDeleteOptions={this.handleDeleteOptions}/>
                 <AddOption/>
@@ -42,14 +49,11 @@ class Header extends React.Component {
 };
 
 class Action extends React.Component {
-    handlePick() {
-        alert('Handled picked!');
-    }
-
+    
     render() {
         return(
             <div>
-                <button disabled={!this.props.hasOptions} onClick={this.handlePick}>What should I do?</button>
+                <button disabled={!this.props.hasOptions} onClick={this.props.onHandlePick}>What should I do?</button>
             </div>
         );
     };

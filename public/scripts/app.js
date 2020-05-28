@@ -17,6 +17,8 @@ var Indecision = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Indecision.__proto__ || Object.getPrototypeOf(Indecision)).call(this, props));
 
         _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
+        _this.handlePick = _this.handlePick.bind(_this);
+
         _this.state = {
             options: ['First thing', 'Second thing', 'Fourth thing']
         };
@@ -33,6 +35,11 @@ var Indecision = function (_React$Component) {
             });
         }
     }, {
+        key: 'handlePick',
+        value: function handlePick() {
+            alert('Handle picked!');
+        }
+    }, {
         key: 'render',
         value: function render() {
             var title = 'Indecision App';
@@ -41,7 +48,8 @@ var Indecision = function (_React$Component) {
                 'div',
                 null,
                 React.createElement(Header, { title: title, subTitle: subTitle }),
-                React.createElement(Action, { hasOptions: this.state.options.length > 0 }),
+                React.createElement(Action, { hasOptions: this.state.options.length > 0,
+                    onHandlePick: this.handlePick }),
                 React.createElement(Options, { options: this.state.options,
                     onHandleDeleteOptions: this.handleDeleteOptions }),
                 React.createElement(AddOption, null)
@@ -98,11 +106,6 @@ var Action = function (_React$Component3) {
     }
 
     _createClass(Action, [{
-        key: 'handlePick',
-        value: function handlePick() {
-            alert('Handled picked!');
-        }
-    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -110,7 +113,7 @@ var Action = function (_React$Component3) {
                 null,
                 React.createElement(
                     'button',
-                    { disabled: !this.props.hasOptions, onClick: this.handlePick },
+                    { disabled: !this.props.hasOptions, onClick: this.props.onHandlePick },
                     'What should I do?'
                 )
             );
