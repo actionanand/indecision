@@ -54,55 +54,47 @@ class Indecision extends React.Component {
     };
 };
 
-class Header extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
-                <h2>{this.props.subTitle}</h2>
-            </div>
-        );
-    };
+const Header = (props) => {
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            <h2>{props.subTitle}</h2>
+        </div>
+    );
 };
 
-class Action extends React.Component {
-    
-    render() {
-        return(
-            <div>
-                <button disabled={!this.props.hasOptions} onClick={this.props.onHandlePick}>What should I do?</button>
-            </div>
-        );
-    };
+const Action = (props) => {
+    return(
+        <div>
+            <button disabled={!props.hasOptions} 
+            onClick={props.onHandlePick}>What should I do?</button>
+        </div>
+    );
 };
 
-class Options extends React.Component {
-
-    render() {
-        return(
-            <div>
-                <button onClick={this.props.onHandleDeleteOptions}>Remove all</button>
-                {
-                    this.props.options.map((option) => {
-                        return (
-                            <Option key={option} optionText={option} />
-                        )
-                    })
-                }
-            </div>
-        );
-    };
+const Options = (props) => {
+    return(
+        <div>
+            <button onClick={props.onHandleDeleteOptions}>Remove all</button>
+            {
+                props.options.map((option) => {
+                    return (
+                        <Option key={option} optionText={option} />
+                    )
+                })
+            }
+        </div>
+    );
 };
 
-class Option extends React.Component {
-    render() {
-        return(
-            <div>
-                <p>{this.props.optionText}</p>
-            </div>
-        );
-    };
+const Option = (props) => {
+    return(
+        <div>
+            <p>{props.optionText}</p>
+        </div>
+    );
 };
+
 
 class AddOption extends React.Component {
     constructor(props) {
