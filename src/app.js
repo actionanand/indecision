@@ -1,9 +1,18 @@
 class Indecision extends React.Component {
     constructor(props){
         super(props);
+        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
         this.state = {
             options: ['First thing', 'Second thing', 'Fourth thing']
         };
+    };
+
+    handleDeleteOptions() {
+        this.setState(() => {
+            return {
+                options: []
+            };
+        });
     };
 
     render() {
@@ -12,8 +21,9 @@ class Indecision extends React.Component {
         return(
             <div>
                 <Header title={title} subTitle={subTitle}></Header>
-                <Action/>
-                <Options options={this.state.options} />
+                <Action hasOptions={this.state.options.length > 0}/>
+                <Options options={this.state.options} 
+                onHandleDeleteOptions={this.handleDeleteOptions}/>
                 <AddOption/>
             </div>
         );
@@ -39,27 +49,18 @@ class Action extends React.Component {
     render() {
         return(
             <div>
-                <button onClick={this.handlePick}>What should I do?</button>
+                <button disabled={!this.props.hasOptions} onClick={this.handlePick}>What should I do?</button>
             </div>
         );
     };
 };
 
 class Options extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleRemoveAll = this.handleRemoveAll.bind(this);
-    }
-
-    handleRemoveAll() {
-        console.log(this.props.options);
-        alert('Removed');
-    }
 
     render() {
         return(
             <div>
-                <button onClick={this.handleRemoveAll}>Remove all</button>
+                <button onClick={this.props.onHandleDeleteOptions}>Remove all</button>
                 {
                     this.props.options.map((option) => {
                         return (
