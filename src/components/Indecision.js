@@ -6,17 +6,22 @@ import Action from './Action';
 import Header from './Header';
 
 export default class Indecision extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
+    // constructor(props){
+    //     super(props);
+    //     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+    //     this.handlePick = this.handlePick.bind(this);
+    //     this.handleAddOption = this.handleAddOption.bind(this);
+    //     this.handleDeleteOption = this.handleDeleteOption.bind(this);
 
-        this.state = {
+    //     this.state = {
+    //         options: []
+    //          };
+    // };
+
+        state = {
             options: []
         };
-    };
+
 
     componentDidMount() {
         try {
@@ -43,23 +48,23 @@ export default class Indecision extends React.Component {
         console.log('Unmounted!');
     }
 
-    handleDeleteOptions() {
+    handleDeleteOptions = () => {
         this.setState(() => ({ options: [] }));
     };
 
-    handleDeleteOption(toBeRemoved) {
+    handleDeleteOption = (toBeRemoved) => {
         this.setState((prevState) => ({
             options: prevState.options.filter((option) => toBeRemoved != option)
         }));
     };
 
-    handlePick() {
+    handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
         alert(option);
     };
 
-    handleAddOption(option) {
+    handleAddOption = (option) => {
         if(!option) {
             return 'Enter a valid option to add!';
         } else if (this.state.options.indexOf(option) > -1) {
