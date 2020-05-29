@@ -5,7 +5,7 @@ import Options from './Options';
 import Action from './Action';
 import Header from './Header';
 
-class Indecision extends React.Component {
+export default class Indecision extends React.Component {
     constructor(props){
         super(props);
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
