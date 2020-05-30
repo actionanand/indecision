@@ -29,3 +29,9 @@
     border: none;
     color: $off-white;
 }
+
+@media(max-width: $desktop-breakpoint) {
+    .big_button {
+        margin-bottom: $m-size;
+    }
+}
