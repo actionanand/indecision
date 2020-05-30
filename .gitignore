@@ -44,3 +44,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+public/bundle.js
+public/bundle.js.map
+public/main.css,
+public/main.css.map

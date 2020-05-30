@@ -14,8 +14,8 @@
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "predeploy": "yarn run build:prod",
-    "deploy": "gh-pages -d build"
+    "start": "node server/server.js",
+    "heroku-postbuild": "yarn run build:prod"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
