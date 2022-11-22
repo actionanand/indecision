@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env) => {
   const isProduction = env === 'production';
@@ -7,7 +8,7 @@ module.exports = (env) => {
   return {
     entry: './src/app.js',
     output: {
-      path: path.join(__dirname, 'public'),
+      path: path.join(__dirname, 'dist'),
       filename: 'bundle.js'
     },
     module: {
@@ -22,6 +23,10 @@ module.exports = (env) => {
     }]
     },
     plugins: [
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, './public/index.html'),
+        // minify: false
+      }),
       new MiniCssExtractPlugin()
     ],
     devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
